@@ -1,0 +1,14 @@
+version: '3'
+services:
+  reverse-proxy:
+    build: ./reverse-proxy
+    ports:
+      - 8080:80
+    volumes:
+      - ./reverse-proxy/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - http-server
+  http-server:
+    build: ./http-server
+    ports:
+      - 8081:80
