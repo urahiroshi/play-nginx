@@ -1,11 +1,19 @@
 version: '3'
 services:
-  reverse-proxy:
-    build: ./reverse-proxy
+  proxy:
+    build: ./proxy
     ports:
       - 8080:80
     volumes:
-      - ./reverse-proxy/conf.d:/etc/nginx/conf.d
+      - ./proxy/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - http-server
+  proxy-keepalive:
+    build: ./proxy-keepalive
+    ports:
+      - 8082:80
+    volumes:
+      - ./proxy-keepalive/conf.d:/etc/nginx/conf.d
     depends_on:
       - http-server
   http-server:
