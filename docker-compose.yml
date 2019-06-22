@@ -18,5 +18,7 @@ services:
       - http-server
   http-server:
     build: ./http-server
+    volumes:
+      - ./http-server/conf.d:/etc/nginx/conf.d
     ports:
       - 8081:80
