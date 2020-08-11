@@ -16,6 +16,12 @@ services:
       - ./proxy-keepalive/conf.d:/etc/nginx/conf.d
     depends_on:
       - http-server
+  proxy-httpbin:
+    build: ./proxy-httpbin
+    ports:
+      - 8083:80
+    volumes:
+      - ./proxy-httpbin/conf.d:/etc/nginx/conf.d
   http-server:
     build: ./http-server
     volumes:
