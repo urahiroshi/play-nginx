@@ -26,5 +26,6 @@ services:
     build: ./http-server
     volumes:
       - ./http-server/conf.d:/etc/nginx/conf.d
+      - ./http-server/.htpasswd:/etc/nginx/.htpasswd
     ports:
       - 8081:80
